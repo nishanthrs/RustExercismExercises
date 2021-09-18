@@ -1,8 +1,7 @@
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Duration, Utc};
 
 // Returns a Utc DateTime one billion seconds after start.
 pub fn after(start: DateTime<Utc>) -> DateTime<Utc> {
-    let gigasecond_in_seconds: i64 = 10 ^ 9;
-    let start_ts = DateTime::timestamp(&start);
-    return Utc.timestamp(start_ts + gigasecond_in_seconds, 0);
+    const GIGASECOND_IN_SECONDS: i64 = i64::pow(10, 9);
+    return start + Duration::seconds(GIGASECOND_IN_SECONDS);
 }
